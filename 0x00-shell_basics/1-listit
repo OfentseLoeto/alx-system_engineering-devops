@@ -1,2 +1,7 @@
+<<<<<<< HEAD
 #!/bin/bash
 # ls 0x00-shell_basics
+=======
+#!!/bin/bash
+ls -l
+>>>>>>> refs/remotes/origin/master
