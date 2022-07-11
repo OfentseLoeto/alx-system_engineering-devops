@@ -1,2 +1,2 @@
 #!/binn/bash
-ls -la
+ls -ltr
