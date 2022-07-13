@@ -1,2 +1,2 @@
 #!/bin/bash
-echo u+rwx, g+x, o+wx hello
+chmod 713 hello
