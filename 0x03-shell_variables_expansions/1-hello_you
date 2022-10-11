@@ -1,2 +1,2 @@
 #!/bin/bash
-echo -e "\ahello root"  
+echo  "Hello root"  
