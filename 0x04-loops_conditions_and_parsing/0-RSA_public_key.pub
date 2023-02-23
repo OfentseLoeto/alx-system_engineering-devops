@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-#This public key is used to connect to a server using SSH
+#This public key is used to connect to a server using SSH.
 
 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC92nQMQnel0cPF09Sup9MODsu4sRXgMy4PV7m+7QQY6ineJ6iyihDS72zRTRK4Edv7SXMP1gQCUvOa6/SbBdcNvFrEI1wTCmScHdC9KPFtOAAOL0k5l/jp5NZ/VcJ3O9iuTnFeaDfBwfO2DXij0qdCp0y+GrGTXXsACI0SO7GYAm4C/2sS7V5p0hMEaJ+wRYVu/Qs60XVzTZQMLUD02aQAMFTIYJbxEZdjWnjX862KHW4+wRN/gNhAE1gL4zJhotk+gvexwySlpohql43zSbSDqkk/18b/wFYEg7LIJEQJ8crz0iw0Izs3Ev0JGR/rLAbf1zLZpHJ/bgeG46HoswY7CxruWrx+7rpwxLPZoSs81I6LCsY2LJAaHiCJe5r35R53cgJmwyDz26a1PB29nyFfUrAnWNriBFxqiYcDnsOzNF3+wW1WvuGbYcdhmQ4gWXusZIFn+WkunzjLiXlsV5gWs9qLJuQFMYBmzzbuSXe+ev3DNrQPhH8EtG6FobjrwbU= root@e98dc0432cd3
