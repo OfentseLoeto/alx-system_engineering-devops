@@ -8,21 +8,19 @@ hour=0
 while [ $hour -le 12 ]
 
 do
-	echo "Hour: $hours"
+	echo "Hour: $hour"
 
-	minutes=1
+	minute=1
 
-	while [ $minutes -le 59 ]
-	
+	while [ $minute -le 59 ]
+
 	do
-	echo "$minutes"
+	echo "$minute"
 
-	(( minutes++ ))
-
-done
-
-(( hours++ ))
+	(( minute++ ))
 
 done
 
+(( hour++ ))
 
+done
