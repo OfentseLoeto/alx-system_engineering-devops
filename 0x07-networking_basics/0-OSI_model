@@ -1,6 +1,2 @@
-#!/usr/bin/env bash
-#The first question gives an explaination of exactly is the OSI
-#ThE second question tells us about how the OSI model is organized
-
-echo -e "2"
-echo -e "2"
+2
+2
