@@ -2,7 +2,5 @@
 #The first question gives an explaination of exactly is the OSI
 #ThE second question tells us about how the OSI model is organized
 
-for n in 2 2;
-do
-	echo $n
-done
+echo -e "2"
+echo -e "2"
