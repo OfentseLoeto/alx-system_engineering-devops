@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# An SSH configuration file
+Host ubuntu
+ Identity ~/.ssh/school
+ PasswordAuthentication no
