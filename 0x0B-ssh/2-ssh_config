@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # An SSH configuration file
-Host web-01
+Host 76385-web-01
  Hostname 100.24.235.144
  User ubuntu
  Identity ~/.ssh/school
