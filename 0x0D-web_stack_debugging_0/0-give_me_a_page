@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Command used to fix the issue with my Apache container
+
+# Open apache2.config file
+sudo vi /etc/apache2/apache2.config
+
+# Insert ip address of my server
+54.237.8.142
+
+# Then run this command to start the container
+sudo service apache2 start
+
+# Run this command to get a string Hello Holberton
+curl http://localhost/
