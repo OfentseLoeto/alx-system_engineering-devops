@@ -11,7 +11,7 @@ apt-get install -y nginx
 echo 'server {
     listen 80;
     location / {
-        echo "Hello World";
+        echo "Hello World!";
 }
 }' > /etc/nginx/site-available/defalt
 
