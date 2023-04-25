@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # An SSH configuration file
 Host 76385-web-01
- Hostname 100.24.235.144
+ Hostname 52.237.8.142
  User ubuntu
  Identity ~/.ssh/school
  PasswordAuthentication no
