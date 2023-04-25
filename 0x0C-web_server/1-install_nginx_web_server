@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# Install nginx on my web-01 server
+
+set -euo pipefail
+
+# Installing nginx
+apt-get update
+apt-get install -y nginx
+
+# Configuring nginx
+echo 'server {
+    listen 80;
+    location / {
+        echo "Hello World";
+}' > /etc/nginx/site-available/defalt
+
+# Restart Nginx
+service nginx restart
