@@ -1,26 +1,26 @@
 #!/usr/bin/env bash
-# Install and configure nginx to listen on port 80
-# and return a "Hello world" page
+# This script installs and configures Nginx to
+# listen on port 80 and return a "Hello World!" page
 
-# Update the package list and install nginx
- sudo apt-get update
- sudo apt-get install -y nginx
+# Update the package list and install Nginx
+sudo apt-get update
+sudo apt-get install -y nginx
 
 # Create a backup of the default configuration file
- sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/default.bak
+sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/default.bak
 
-# Modifying the default config file to listen on port 80 and return "Hello World!"
- sudo sed -i 's/listen\s*80;/listen 80 default_server;/g' /etc/nginx/sites-available/default
- echo "server {
-         listen 80 default_server;
-         listen [::]:80 default_server;
-         root /var/www/html;
-         index.html;
-         server_name _;
-         location / {
-                 echo 'Hello World!';
-}
-}" | tee /etc/nginx/sites-available/default > /dev/null
+# Modify the default configuration file to listen on port 80 and return "Hello World!"
+sudo sed -i 's/listen\s*80;/listen 80 default_server;/g' /etc/nginx/sites-available/default
+echo "server {
+        listen 80 default_server;
+        listen [::]:80 default_server;
+        root /var/www/html;
+        index index.html;
+        server_name _;
+        location / {
+                echo 'Hello World!';
+        }
+}" | sudo tee /etc/nginx/sites-available/default > /dev/null
 
-# Restart nginx
-  sudo kill -s HUP $(cat /var/run/nginx.pid)
+# Restart Nginx
+sudo kill -s HUP $(cat /var/run/nginx.pid)
