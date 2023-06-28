@@ -1,4 +1,7 @@
-file { '/root/ubuntu/.ssh/config':
+# Script that configure client SSH configuration file
+# using Puppet to use the private key 
+
+file { '/home/0x0B-ssh/.ssh/config':
   ensure => file,
   owner  => 'ubuntu',
   group  => 'ubuntu',
