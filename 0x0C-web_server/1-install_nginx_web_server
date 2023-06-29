@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# This scipt install Nginx on a web server
+
+ # Update package list
+  apt-get update
+
+ # Install Nginx
+  apt-get -y install nginx
+
+ # Configure Nginx
+  cat > /etc/nginx/sites-available/default << EOL
+  server {
+      listen 80;
+      web-01;
+
+      location / {
+          return 200 "Hello World";
+      }
+ }
+ EOL
+
+ # Restart nginx
+  service nginx restart
