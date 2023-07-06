@@ -4,10 +4,13 @@
 get_record_info() {
   local domain=$1
   local subdomain=$2
-  local record_info=$(dig $subdomain.$domain | awk '/ANSWER SECTION/{getline; print}')
+  local record_info
+   record_info=$(dig $subdomain.$domain | awk '/ANSWER SECTION/{getline; print}')
   
-  local record_type=$(echo $record_info | awk '{print $4}')
-  local destination=$(echo $record_info | awk '{print $5}')
+  local record_type
+   record_type=$(echo $record_info | awk '{print $4}')
+  local destination 
+   destination=$(echo $record_info | awk '{print $5}')
   echo "The subdomain $subdomain is a $record_type record and points to $destination"
 
 }
@@ -16,13 +19,13 @@ domain=$1
 subdomain=$2
 
 if [ -z "$subdomain" ]; then
-  subdomains=("www" "lb-01" "web-01" "web-02")
+   subdomains=("www" "lb-01" "web-01" "web-02")
 
 else
-  subdomains=("$subdomain")
+   subdomains=("$subdomain")
 fi
 
 for sub in "${subdomains[@]}"; do
-  get_record_info $domain $sub
+   get_record_info "$domain" "$sub"
 
 done
