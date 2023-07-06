@@ -1,24 +1,28 @@
 #!/bin/bash
-# Configuring domain zone so that the subdomain www points to load-balancer IP (lb-01)
+# Configuring domain zone so that the subdomain www points to load-balancer IP (lb-01).
 
-get_subdomain_info() {
-    local domain=$1
-    local subdomain=$2
-    if [[ -z $subdomain ]]; then
-        subdomains=("www" "54.157.167.244" "52.3.220.1" "52.91.124.243")
-    else
-       subdomains=("$subdomain")
-    fi
-    
-    for sub in "${subdomains[@]}"; do
-        info=$(dig +short $sub.$info)
-        if [[ -z $info ]]; then
-            echo "The subdomain $sub is not confiqured."
-        else
-           record_type=$(echo "$info" | awk 'NR==1{print $4}')
-           destination=$(echo "$info" | awk 'NR==1{print $1}')
-           echo "The subdomain $sub is A $record_type record and points to $destination."
-        fi
-    done
+get_record_info() {
+  local domain=$1
+  local subdomain=$2
+  local record_info=$(dig $subdomain.$domain | awk '/ANSWER SECTION/{getline; print}')
+  
+  local record_type=$(echo $record_info | awk '{print $4}')
+  local destination=$(echo $record_info | awk '{print $5}')
+  echo "The subdomain $subdomain is a $record_type record and points to $destination"
+
 }
-get_subdomain_info "$@"
+
+domain=$1
+subdomain=$2
+
+if [ -z "$subdomain" ]; then
+  subdomains=("www" "lb-01" "web-01" "web-02")
+
+else
+  subdomains=("$subdomain")
+fi
+
+for sub in "${subdomains[@]}"; do
+  get_record_info $domain $sub
+
+done
