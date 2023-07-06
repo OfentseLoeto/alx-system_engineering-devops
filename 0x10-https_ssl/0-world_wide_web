@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Configuring domain zone so that the subdomain www points to load-balancer IP (lb-01).
 
 get_record_info() {
