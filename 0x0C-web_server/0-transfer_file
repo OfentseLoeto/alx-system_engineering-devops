@@ -12,7 +12,7 @@ username="$3"
 ssh_key="$4"
 
 export "SCP_OPTIONS=-o StrictHostKeyChecking=no"
-scp -i "$ssh_key" "file_paht" "username@$server_ip:~/"
+scp -i "$ssh_key" "file_path" "username@$server_ip:~/"
 
 if [ "$?" -eq 0 ]; then
   echo "File transfer completed successfully."
