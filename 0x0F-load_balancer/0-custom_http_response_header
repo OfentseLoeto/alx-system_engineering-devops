@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+# Configuring Nginx so that its HTTP response contains a custom header (on web-01 and web-02
+
+# Updating the system
+sudo apt update
+sudo apt upgrade -y
+
+# Installing Nginx
+sudo apt install Nginx -y
+
+# Get the hostname
+hostname=$(ubuntu)
+
+# Configuring customHTTP response header in Nginx
+sudo bash -c 'cat > /etc/nginx/sites-available/default <<EOF
+server {
+   listen 80 default_server;
+   server_name _;
+# Adding custom HTTP response header
+location / {
+   add_header X-Served-By $ubuntu;
+   proxy_pass http://backend;
+}
+}
+EOF'
+
+# Restarting nginxto apply changes
+sudo service nginx restart
