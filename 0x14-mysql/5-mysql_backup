@@ -4,7 +4,7 @@
 
 # Checking if the password argument is provided
 if [ -z "$1" ]; then
-  echo "Error: Please provide the MySQL root password as an argument."
+  echo "Error: Please provide the MySQL root password as an argument." >&2
   exit 1
 fi
 
