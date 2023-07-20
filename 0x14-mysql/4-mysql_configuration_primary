@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# This script enables binary logging and set a unique server id.
+
+log_bin = /var/log/mysql/mysql-bin.log
+server-id = 1
+
