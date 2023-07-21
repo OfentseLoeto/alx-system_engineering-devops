@@ -11,5 +11,10 @@ fi
 # Get username from the first argument
 username="$1"
 
-# Run whoami command under the specified user
-sudo -u "$username" whoami
+# Runthe whoami command under the specified user
+if id "$username" &>/dev/null; then
+  sudo -u "$username" whoami
+else
+  echo "Error: User $username does not exist"
+  exit 1
+fi
