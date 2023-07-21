@@ -12,4 +12,4 @@ fi
 username="$1"
 
 # Run whoami command under the specified user
-su - "$username" -c "whoami"
+sudo -u "$username" whoami
