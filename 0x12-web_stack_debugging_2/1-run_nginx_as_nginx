@@ -2,14 +2,27 @@
 # This script to configure Nginx to run as
 # the nginx user and listen on port 8080
 
-# Updating Nginx configuration to run as nginx user
-sed -i 's/user\s\+.*;/user nginx;/' /etc/nginx/nginx.conf
+nginx_user="nginx"
 
+nginx_config="/etc/ngix/nginx.conf"
+if id "$nginx_user" &>/dev/null; then
+  sed -i "s/^user\s.*;/user $nginx_user $nginx_user;/" /etc/nginx/nginx.conf
+
+else
+ echo "Error: USer $nginx_user does not exist."
+ exit 1
+
+fi
+# Check if the default server configuration exists
 default_server_config="/etc/nginx/conf.d/default.conf"
+
+# Check if the default server configuration exists
+default_server_config="/etc/nginx/conf.d/default.conf"
+
 if [ -f "$default_server_config" ]; then
 
- sed -i '/listen\s\+80;/a \   listen 8080 default_server;' "$default_server_config"
+  sed -i '/listen\s\+80;/a \    listen 8080 default_server;' "$default_server_config"
 fi
 
-# Restarting Nginx service
+# Restart Nginx service to apply the changes
 service nginx restart
