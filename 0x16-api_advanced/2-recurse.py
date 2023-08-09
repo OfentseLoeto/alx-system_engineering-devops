@@ -8,7 +8,7 @@ import requests
 
 
 def recurse(subreddit, hot_list=[], after=None):
-    user_agent = "MyRedditBold/1.0"
+    user_agent = "MyRedditBot/1.0"
     headers = {
         "User-Agent": user_agent
     }
