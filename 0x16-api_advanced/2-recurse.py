@@ -10,20 +10,23 @@ import requests
 
 def recurse(subreddit, hot_list=[], after=None):
     user_agent = "MyRedditBold/1.0"
-    headers = {"User-Agent": user_agent}
+    headers = {
+        "User-Agent": user_agent
+    }
+
     url = f"https://www.reddit.com/r/{subreddit}/hot.json"
 
-    params = {"limit": 10}
+    params = {"limit":10}
     if after:
         params["after"] = after
 
     try:
-        response =  requests.get(
-                url,
-                headers=headers,
-                params=params,
-                allow_redirects=False
-                )
+        response = requests.get(
+            url,
+            headers=headers,
+            params=params,
+            allow_redirects=False
+        )
 
         """Raise an exception for 4xx and 5xx status codes"""
         response.raise_for_status()
@@ -42,5 +45,6 @@ def recurse(subreddit, hot_list=[], after=None):
                 return hot_list
         else:
             return None
+
     except (requests.RequestException, KeyError, ValueError):
         return None
