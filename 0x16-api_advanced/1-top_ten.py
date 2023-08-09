@@ -4,12 +4,13 @@
 """
 
 
-
 import requests
 
 def top_ten(subreddit):
-    user_agent = ""
-    headers = {"User-Agent": user_agent}
+    user_agent = "MyRedditBolt/1.0"
+    headers = {
+            "User-Agent": user_agent
+    }
     url = f"https://www.reddit.com/r/{subreddit}/hot.json"
 
     try:
