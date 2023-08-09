@@ -10,9 +10,9 @@ Javascript should count as javascript, but java should not).
 import requests
 
 
-def count_words(subreddit, word_list, after=None, count_dict=None):
-    if count_dict is None:
-        count_dict = {}
+def count_words(subreddit, word_list, after=None, counter=None):
+    if counter is None:
+        counter = {}
 
         user_agent = "MyRedditBot/1.0"
         headers = {
@@ -32,6 +32,7 @@ def count_words(subreddit, word_list, after=None, count_dict=None):
                 params=params,
                 allow_redirects=False
             )
+            """Raise an exception for status codes"""
             response.raise_for_status()
             data = response.json()
 
@@ -41,16 +42,18 @@ def count_words(subreddit, word_list, after=None, count_dict=None):
                 for post in posts:
                     title = post["data"]["title"].lower()
                     for word in word_list:
-                        word = word.lower()
-                        if word in title and not title.startswith(f"{word}.") and not title.startswith(f"{word}!") and not title.startswith(f"{word}_"):
-                            count_dict[word] = count_dict.get(word, 0) +1
-                            after = data["data"]["after"]
-            if after is not None:
-                return count_words(subreddit, word_list, after, count_dict)
-            
-            sorted_counts = sorted(count_dict.items(), key=lambda x: (-x[1], x[0]))
-            for word, count in sorted_counts:
-                print(f"{word}: {count}")
+                        if word.lower() in title and title.startswith(word.lower() + " "):
+                            if word not in counter:
+                                counter[word] = 1
+                            else:
+                                counter[word] += 1
+            if len(posts) > 0:
+                after = posts[-1]["data"]["name"]
+                return count_words(subreddit, word_list, after, counter)
+            else:
+                sorted_counter = sorted(counter.items(), key=lambda x: (-x[1], x[0]))
+                for word, count in sorted_counter:
+                    print(f"{word.lower()}: {counter}")
 
         except (requests.RequestException, KeyError, ValueError):
-            print("Invalid subreddit or request error")
+            pass
