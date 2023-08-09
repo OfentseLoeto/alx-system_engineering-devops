@@ -6,21 +6,26 @@
 import requests
 
 def recurse(subreddit, hot_list=[], after=None):
-    user_agent = ""
+    user_agent = "MyRedditBold/1.0"
     headers = {"User-Agent": user_agent}
     url = f"https://www.reddit.com/r/{subreddit}/hot.json"
 
-    params = {"limit": 100}
+    params = {"limit": 10}
     if after:
         params["after"] = after
 
     try:
-        response =  requests.get(url, headers=headers, params=params, allow_redirects=False)
+        response =  requests.get(
+                url,
+                headers=headers,
+                params=params,
+                allow_redirects=False
+                )
         """Raise an exception for 4xx and 5xx status codes"""
         response.raise_for_status()
-        response = data.json()
+        data = response.json()
 
-        if data in "data" and "children" in data["data"]:
+        if "data" in data and "children" in data["data"]:
             posts = data["data"]["children"]
 
             for post in posts:
