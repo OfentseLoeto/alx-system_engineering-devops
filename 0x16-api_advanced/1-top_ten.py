@@ -16,7 +16,8 @@ def top_ten(subreddit):
         response = requests.get(
                 url,
                 headers=headers,
-                allow_redirects=False)
+                allow_redirects=False
+                )
 
 
         """Raise an exception for 4xx and 5xx status codes"""
@@ -27,8 +28,8 @@ def top_ten(subreddit):
             """Take the first 10 posts"""
             posts = data["data"]["children"][:10]
 
-            for posts in posts:
-                print(posts["data"]["title"])
+            for post in posts:
+                print(post["data"]["title"])
         else:
             print("No posts found")
 
