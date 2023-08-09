@@ -3,7 +3,9 @@
 The script prints the titles of the first 10
 hot posts listed for a given subreddit.
 """
+
 import requests
+
 
 def top_ten(subreddit):
     user_agent = "MyRedditBolt/1.0"
