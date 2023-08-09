@@ -8,17 +8,16 @@ import requests
 def top_ten(subreddit):
     user_agent = "MyRedditBolt/1.0"
     headers = {
-            "User-Agent": user_agent
+        "User-Agent": user_agent
     }
     url = f"https://www.reddit.com/r/{subreddit}/hot.json"
 
     try:
         response = requests.get(
-                url,
-                headers=headers,
-                allow_redirects=False
-                )
-
+            url,
+            headers=headers,
+            allow_redirects=False
+        )
 
         """Raise an exception for 4xx and 5xx status codes"""
         response.raise_for_status()
