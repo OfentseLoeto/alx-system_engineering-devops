@@ -5,6 +5,7 @@
 
 import requests
 
+
 def top_ten(subreddit):
     user_agent = ""
     headers = {"User-Agent": user_agent}
