@@ -4,6 +4,7 @@
 
 import requests
 
+
 def number_of_subscribers(subreddit):
     user_agent = "MyRedditBolt/1.0"
     headers = {
