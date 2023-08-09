@@ -4,12 +4,13 @@
 """
 
 
+
 import requests
 
 def top_ten(subreddit):
     user_agent = ""
     headers = {"User-Agent": user_agent}
-    url = f"https://www.reddis.com/r/{subreddit}/hot.json"
+    url = f"https://www.reddit.com/r/{subreddit}/hot.json"
 
     try:
         response = requests.get(url, headers=headers, allow_redirects=False)
