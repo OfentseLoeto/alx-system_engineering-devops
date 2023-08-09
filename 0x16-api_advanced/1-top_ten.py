@@ -3,8 +3,8 @@
    hot posts listed for a given subreddit.
 """
 
-import requests
 
+import requests
 
 def top_ten(subreddit):
     user_agent = ""
