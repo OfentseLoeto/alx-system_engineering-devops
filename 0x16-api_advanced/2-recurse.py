@@ -1,6 +1,7 @@
 #!/usr/bin/python3
-"""This script returns a list containing the
-   titles of all hot articles for a given subreddit.
+"""
+This script returns a list containing the
+titles of all hot articles for a given subreddit.
 """
 
 
@@ -23,6 +24,7 @@ def recurse(subreddit, hot_list=[], after=None):
                 params=params,
                 allow_redirects=False
                 )
+
         """Raise an exception for 4xx and 5xx status codes"""
         response.raise_for_status()
         data = response.json()
