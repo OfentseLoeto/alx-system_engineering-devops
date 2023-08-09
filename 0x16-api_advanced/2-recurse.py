@@ -3,6 +3,7 @@
 This script returns a list containing the
 titles of all hot articles for a given subreddit.
 """
+
 import requests
 
 
@@ -14,7 +15,7 @@ def recurse(subreddit, hot_list=[], after=None):
 
     url = f"https://www.reddit.com/r/{subreddit}/hot.json"
 
-    params = {"limit":10}
+    params = {"limit":100}
 
     if after:
         params["after"] = after
@@ -27,7 +28,7 @@ def recurse(subreddit, hot_list=[], after=None):
             allow_redirects=False
         )
 
-        """Raise an exception for 4xx and 5xx status codes"""
+        """Raise an exception for status codes"""
         response.raise_for_status()
         data = response.json()
 
