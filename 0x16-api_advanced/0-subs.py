@@ -6,7 +6,9 @@ import requests
 
 def number_of_subscribers(subreddit):
     user_agent = "MyRedditBolt/1.0"
-    headers = {"User-Agent": user_agent}
+    headers = {
+            "User-Agent": user_agent
+            }
     url = f"https://www.reddit.com/r/{subreddit}/about.json"
 
     response = requests.get(url, headers=headers)
