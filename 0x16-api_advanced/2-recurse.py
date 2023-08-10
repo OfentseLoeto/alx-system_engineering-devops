@@ -9,12 +9,14 @@ import requests
 
 
 def recurse(subreddit, hot_list=[], after=None):
+
     user_agent = "MyRedditBot/1.0"
     headers = {
         "User-Agent": user_agent
     }
 
     url = f"https://www.reddit.com/r/{subreddit}/hot.json"
+
 
     params = {
         "limit":10
@@ -42,8 +44,7 @@ def recurse(subreddit, hot_list=[], after=None):
                 hot_list.append(post["data"]["title"])
 
             after = data["data"]["after"]
-            if after:
-                recurse(
+            if after:recurse(
                     subreddit,
                     hot_list,
                     after
