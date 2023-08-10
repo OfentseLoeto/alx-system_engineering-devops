@@ -21,7 +21,7 @@ def top_ten(subreddit):
             allow_redirects=False
         )
 
-        """Raise an exception for 4xx and 5xx status codes"""
+        """Raise an exception for status codes"""
         response.raise_for_status()
         data = response.json()
 
