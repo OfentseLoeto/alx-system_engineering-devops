@@ -57,3 +57,8 @@ def count_words(subreddit, word_list, after=None, counter=None):
 
         except (requests.RequestException, KeyError, ValueError):
             pass
+
+if __name__ == "__main__":
+    subreddit_name = "python"
+    keyword_list = ["python", "java", "javascript"]
+    count_words(subreddit_name, keyword_list)
