@@ -1,11 +1,19 @@
 #Using strace, find out why Apache is returning a 500 error. 
 
 class apache_fix {
- exec { 'restart_apache':
-   command     => '/bin/sed -i s/class-wp-locale.phpp/class-wp-locale.php/g /var/www/html/wp-settings.php',
-   refreshonly => true,
-   require   => File['/var/www/html/wp-settings.php'],
-}
+  file { '/var/www/html/wp-settings.php':
+    ensure  => file,
+    source  => 'puppet:///modules/apache_fix/wp-settings.php',
+    mode    => '0644',
+    require => Package['apache2'],
+    notify  => Exec['restart_apache'],
+  }
+
+  exec { 'restart_apache':
+    command     => '/usr/sbin/service apache2 restart',
+    refreshonly => true,
+  }
 }
 
-class { 'apache_fix':}
+class { 'apache_fix': }
+
