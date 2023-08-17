@@ -1,14 +1,13 @@
-#!/usr/bin/python3
-"""
-configuring Nginx to serve a page from the route /airbnb-onepage/
-"""
+#!/usr/bin/env bash
+
+# configuring Nginx to serve a page from the route /airbnb-onepage/
 
 server {
         listen 80;
-        server_name '100.27.5.80';
+        server_name 100.27.5.80;
 
         location /airbnb-onepage/ {
-            proxy_pass http://'127.0.0.1:5000';
+            proxy_pass http://127.0.0.1:5000;
             proxy_set_header Host $host;
             proxy_set_header X-Real-IP $remote_addr;
             }
