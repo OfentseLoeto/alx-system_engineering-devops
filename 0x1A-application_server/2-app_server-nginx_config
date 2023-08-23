@@ -4,11 +4,20 @@
 
 server {
         listen 80;
-        server_name 100.27.5.80;
+        server_name 18.233.66.247;
 
         location /airbnb-onepage/ {
             proxy_pass http://127.0.0.1:5000;
             proxy_set_header Host $host;
             proxy_set_header X-Real-IP $remote_addr;
-            }
-        }
+    }
+        location / {
+	    try_files $uri @hbnb_proxy;
+    }
+
+        location @hbnb_proxy {
+	    proxy_pass http://127.0.0.1:5000;
+	    proxy_set_header Host $host;
+	    proxy_set_header X-Real-IP $remote_addr;
+    }
+}
