@@ -1,19 +1,10 @@
-#Using strace, find out why Apache is returning a 500 error. 
+#Using strace, find out why Apache is returning error 500
 
-class apache_fix {
-  file { '/var/www/html/wp-settings.php':
-    ensure  => file,
-    source  => 'puppet:///modules/apache_fix/wp-settings.php',
-    mode    => '0644',
-    require => Package['apache2'],
-    notify  => Exec['restart_apache'],
-  }
-
-  exec { 'restart_apache':
-    command     => '/usr/sbin/service apache2 restart',
-    refreshonly => true,
-  }
+exec { 'fix-php-500':
+   environment => ['DIR=/var/www/html/wp-settings.phpp',
+                  'OLD=phpp',
+                  'NEW=php'],
+   command    => 'sudo sed -i "s/$OLD/$NEW/" $DIR',
+   path       => ['/usr/bin', '/bin'],
+   returns    => [0, 1]
 }
-
-class { 'apache_fix': }
-
